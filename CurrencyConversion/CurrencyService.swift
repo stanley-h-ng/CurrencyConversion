@@ -51,6 +51,15 @@ class CurrencyService {
     }
     
     func getCurrencies(completion: @escaping ([Currency]) -> Void, failure: @escaping (Error?) -> Void) {
+        if let lastUpdate = LocalStorageManager.shared.fetchCurrencyListLastUpdateTime(),
+           let currencyList = LocalStorageManager.shared.fetchCurrencyList() {
+            
+            if Date() < lastUpdate.addingTimeInterval(Config.shared.refreshIntevalInSeconds()) {
+                completion(currencyList)
+                return
+            }
+        }
+        
         let url = CurrencyServiceURLBuilder.currencyListURL()
         let parameters = [
             "access_key": Config.shared.apiKey()
@@ -67,6 +76,8 @@ class CurrencyService {
                         }
                     }
                 }
+                LocalStorageManager.shared.store(currencyList: result)
+                LocalStorageManager.shared.store(currencyListLastUpdateTime: Date())
                 completion(result)
             } else {
                 failure(nil)

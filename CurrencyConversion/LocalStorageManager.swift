@@ -14,6 +14,8 @@ class LocalStorageManager {
     struct Filenames {
         static let ConversionRates = "ConversionRates"
         static let ConversionRatesLastUpdateTime = "ConversionRatesLastUpdateTime"
+        static let CurrencyList = "CurrencyList"
+        static let CurrencyListLastUpdateTime = "CurrencyListLastUpdateTime"
     }
     
     private var pathForCache = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
@@ -53,6 +55,30 @@ class LocalStorageManager {
     
     func fetchConversionRatesLastUpdateTime() -> Date? {
         if let data = readFile(filename: Filenames.ConversionRatesLastUpdateTime) {
+            return NSKeyedUnarchiver.unarchiveObject(with: data) as? Date
+        }
+        return nil
+    }
+    
+    func store(currencyList: [Currency]) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: currencyList)
+        writeToFile(data: data, filename: Filenames.CurrencyList)
+    }
+    
+    func fetchCurrencyList() -> [Currency]? {
+        if let data = readFile(filename: Filenames.CurrencyList) {
+            return NSKeyedUnarchiver.unarchiveObject(with: data) as? [Currency]
+        }
+        return nil
+    }
+    
+    func store(currencyListLastUpdateTime: Date) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: currencyListLastUpdateTime)
+        writeToFile(data: data, filename: Filenames.CurrencyListLastUpdateTime)
+    }
+    
+    func fetchCurrencyListLastUpdateTime() -> Date? {
+        if let data = readFile(filename: Filenames.CurrencyListLastUpdateTime) {
             return NSKeyedUnarchiver.unarchiveObject(with: data) as? Date
         }
         return nil

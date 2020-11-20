@@ -77,7 +77,7 @@ class CurrencyService {
     }
     
     func getConversionRates(completion: @escaping ([String: Double]) -> Void, failure: @escaping (Error?) -> Void) {
-        if let lastUpdate = LocalStorageManager.shared.fetchCurrencyRatesLateUpdateTime(),
+        if let lastUpdate = LocalStorageManager.shared.fetchConversionRatesLateUpdateTime(),
            let conversionRates = LocalStorageManager.shared.fetchConversionRates() {
             
             if Date() < lastUpdate.addingTimeInterval(Config.shared.refreshIntevalInSeconds()) {
@@ -94,7 +94,7 @@ class CurrencyService {
             if data["success"] as? Bool == true {
                 if let conversionRates = data["quotes"] as? [String: Double] {
                     LocalStorageManager.shared.store(conversionRates: conversionRates)
-                    LocalStorageManager.shared.store(currencyRatesLateUpdateTime: Date())
+                    LocalStorageManager.shared.store(conversionRatesLateUpdateTime: Date())
                     completion(conversionRates)
                 }
             } else {

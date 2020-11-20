@@ -6,6 +6,7 @@ target 'CurrencyConversion' do
   use_frameworks!
 
   # Pods for CurrencyConversion
+  pod 'Alamofire'
 
   target 'CurrencyConversionTests' do
     inherit! :search_paths

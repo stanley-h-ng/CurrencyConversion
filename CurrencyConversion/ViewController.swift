@@ -71,6 +71,18 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return string.rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789.").inverted) == nil
+        if string.rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789.").inverted) != nil {
+            return false
+        }
+        
+        if let text = textField.text, let range = Range(range, in: text) {
+            let newText = text.replacingCharacters(in: range, with: string)
+            do {
+                let regex = try NSRegularExpression(pattern: "^\\d*\\.?\\d*$", options: .anchorsMatchLines)
+                return regex.matches(in: newText, options: .anchored, range: NSRange(location: 0, length: newText.count)).count > 0
+            } catch {}
+        }
+        
+        return true
     }
 }

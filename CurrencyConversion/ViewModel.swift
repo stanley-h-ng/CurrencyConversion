@@ -10,7 +10,7 @@ import Foundation
 class ViewModel {
     
     func start() {
-        CurrencyService.shared.getCurrencies { (data) in
+        CurrencyService.shared.getCurrencies { (currencies) in
             
         } failure: { (error) in
             

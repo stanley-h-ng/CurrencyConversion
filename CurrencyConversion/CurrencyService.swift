@@ -25,7 +25,7 @@ class CurrencyService {
         session = Session(configuration: urlSessionConfiguration, serverTrustManager: serverTrustManager)
     }
     
-    func getCurrencies(completion: @escaping (NSDictionary) -> Void, failure: @escaping (Error?) -> Void) {
+    func getCurrencies(completion: @escaping ([Currency]) -> Void, failure: @escaping (Error?) -> Void) {
         let url = CurrencyServiceURLBuilder.currencyListURL()
         let parameters = [
             "access_key": Config.shared.apiKey()
@@ -38,7 +38,16 @@ class CurrencyService {
                 if statusCode == 200 {
                     if let data = data as? NSDictionary {
                         if data["success"] as? Bool == true {
-                            completion(data)
+                            var result: [Currency] = []
+                            if let currencies = data["currencies"] as? [String: String] {
+                                let keys = currencies.keys.sorted()
+                                for key in keys {
+                                    if let name = currencies[key] {
+                                        result.append(Currency(code: key, name: name))
+                                    }
+                                }
+                            }
+                            completion(result)
                         } else {
                             failure(nil)
                         }

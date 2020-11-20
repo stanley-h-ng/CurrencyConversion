@@ -23,7 +23,6 @@ class Currency: NSObject, NSCoding {
     }
     
     required init?(coder: NSCoder) {
-        
         code = coder.decodeObject(forKey: Keys.Code) as? String ?? ""
         name = coder.decodeObject(forKey: Keys.Name) as? String ?? ""
     }

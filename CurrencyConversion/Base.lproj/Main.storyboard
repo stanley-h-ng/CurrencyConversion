@@ -29,19 +29,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2hI-YC-r3S"/>
                                 </connections>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-MS-P6F">
+                                <rect key="frame" x="15" y="157" width="384" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="V8X-G5-4Ei" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="1Fs-jA-Y94"/>
+                            <constraint firstItem="6J3-MS-P6F" firstAttribute="top" secondItem="JeD-3V-Tpn" secondAttribute="bottom" constant="15" id="2GQ-hn-0JH"/>
+                            <constraint firstItem="6J3-MS-P6F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="FiK-N5-Av6"/>
                             <constraint firstItem="V8X-G5-4Ei" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Lep-3U-nd8"/>
                             <constraint firstItem="JeD-3V-Tpn" firstAttribute="top" secondItem="V8X-G5-4Ei" secondAttribute="bottom" constant="15" id="aJA-CV-8te"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6J3-MS-P6F" secondAttribute="trailing" constant="15" id="hAl-uh-KCW"/>
                             <constraint firstItem="JeD-3V-Tpn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="jV4-l5-BSE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JeD-3V-Tpn" secondAttribute="trailing" constant="15" id="tDq-de-gpC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V8X-G5-4Ei" secondAttribute="trailing" constant="15" id="tXY-ag-ErJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6J3-MS-P6F" secondAttribute="bottom" constant="15" id="wVm-oG-FDT"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tbvResult" destination="6J3-MS-P6F" id="0fU-5a-4ox"/>
                         <outlet property="tfAmount" destination="JeD-3V-Tpn" id="yct-Oa-J4V"/>
                         <outlet property="tfCurrency" destination="V8X-G5-4Ei" id="KJ6-5Q-EG1"/>
                     </connections>

@@ -10,6 +10,6 @@ import Foundation
 class ResultCellViewModel {
     
     var currency = ""
-    var amount = 0.0
+    var amount = ""
     
 }

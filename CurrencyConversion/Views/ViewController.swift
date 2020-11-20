@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tfCurrency: UITextField?
     @IBOutlet weak var tfAmount: UITextField?
+    @IBOutlet weak var tbvResult: UITableView!
     
     let currencyPickerView = UIPickerView()
     
@@ -30,6 +31,8 @@ class ViewController: UIViewController {
     
     func initUI() {
         setupTFCurrency()
+        
+        tbvResult.register(UINib(nibName: String.init(describing: ResultTableViewCell.self), bundle: nil), forCellReuseIdentifier: String.init(describing: ResultTableViewCell.self))
     }
     
     func setupTFCurrency() {
@@ -56,6 +59,11 @@ class ViewController: UIViewController {
             .subscribe(onNext: { [weak self] text in
                 self?.viewModel.amountDidUpdate(amount: text ?? "")
             }).disposed(by: disposeBag)
+        
+        viewModel.results
+            .bind(to: tbvResult.rx.items(cellIdentifier: String(describing: ResultTableViewCell.self), cellType: ResultTableViewCell.self)) { (_, cellViewModel, cell) in
+                cell.set(viewModel: cellViewModel)
+            }.disposed(by: disposeBag)
     }
     
     @objc func currencyPickerDoneDidClick() {

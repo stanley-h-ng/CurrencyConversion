@@ -49,11 +49,15 @@ class ViewModel {
                     if let conversionRateToUSD = conversionRates["USD\(currencySelected.code)"] {
                         let amountInUSD = self.amount / conversionRateToUSD
                         var resultCellViewModels: [ResultCellViewModel] = []
+                        
+                        let numberFormatter = NumberFormatter()
+                        numberFormatter.numberStyle = .decimal
+                        
                         for curreny in self.currencies.value {
                             if let desiredConversionRate = conversionRates["USD\(curreny.code)"] {
                                 let resultCellViewModel = ResultCellViewModel()
                                 resultCellViewModel.currency = "\(curreny.code) - \(curreny.name)"
-                                resultCellViewModel.amount = amountInUSD * desiredConversionRate
+                                resultCellViewModel.amount = numberFormatter.string(from: amountInUSD * desiredConversionRate as NSNumber) ?? ""
                                 resultCellViewModels.append(resultCellViewModel)
                             }
                         }

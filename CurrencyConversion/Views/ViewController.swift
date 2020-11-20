@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tfCurrency: UITextField?
     @IBOutlet weak var tfAmount: UITextField?
+    @IBOutlet weak var lblError: UILabel?
     @IBOutlet weak var tbvResult: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView?
     
@@ -78,6 +79,10 @@ class ViewController: UIViewController {
                 self?.activityIndicatorView?.stopAnimating()
             }
         }).disposed(by: disposeBag)
+        
+        viewModel.error.subscribe { [weak self] error in
+            self?.lblError?.text = error
+        }.disposed(by: disposeBag)
     }
     
     @objc func currencyPickerDoneDidClick() {

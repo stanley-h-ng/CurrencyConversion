@@ -29,8 +29,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2hI-YC-r3S"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGa-ho-Mfu">
+                                <rect key="frame" x="15" y="157" width="384" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.89019607840000003" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-MS-P6F">
-                                <rect key="frame" x="15" y="157" width="384" height="690"/>
+                                <rect key="frame" x="15" y="191.5" width="384" height="655.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="AzB-dS-Igx">
@@ -42,12 +48,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="V8X-G5-4Ei" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="1Fs-jA-Y94"/>
-                            <constraint firstItem="6J3-MS-P6F" firstAttribute="top" secondItem="JeD-3V-Tpn" secondAttribute="bottom" constant="15" id="2GQ-hn-0JH"/>
                             <constraint firstItem="6J3-MS-P6F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="FiK-N5-Av6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OGa-ho-Mfu" secondAttribute="trailing" constant="15" id="GGP-3h-FCs"/>
+                            <constraint firstItem="6J3-MS-P6F" firstAttribute="top" secondItem="OGa-ho-Mfu" secondAttribute="bottom" constant="15" id="HF9-me-IfF"/>
+                            <constraint firstItem="OGa-ho-Mfu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Kxe-Lu-vQS"/>
                             <constraint firstItem="V8X-G5-4Ei" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Lep-3U-nd8"/>
                             <constraint firstItem="JeD-3V-Tpn" firstAttribute="top" secondItem="V8X-G5-4Ei" secondAttribute="bottom" constant="15" id="aJA-CV-8te"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6J3-MS-P6F" secondAttribute="trailing" constant="15" id="hAl-uh-KCW"/>
                             <constraint firstItem="JeD-3V-Tpn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="jV4-l5-BSE"/>
+                            <constraint firstItem="OGa-ho-Mfu" firstAttribute="top" secondItem="JeD-3V-Tpn" secondAttribute="bottom" constant="15" id="ni8-MD-A9Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JeD-3V-Tpn" secondAttribute="trailing" constant="15" id="tDq-de-gpC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V8X-G5-4Ei" secondAttribute="trailing" constant="15" id="tXY-ag-ErJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6J3-MS-P6F" secondAttribute="bottom" constant="15" id="wVm-oG-FDT"/>
@@ -55,6 +64,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="AzB-dS-Igx" id="JzN-Ad-hVG"/>
+                        <outlet property="lblError" destination="OGa-ho-Mfu" id="zZ2-6v-oXY"/>
                         <outlet property="tbvResult" destination="6J3-MS-P6F" id="0fU-5a-4ox"/>
                         <outlet property="tfAmount" destination="JeD-3V-Tpn" id="yct-Oa-J4V"/>
                         <outlet property="tfCurrency" destination="V8X-G5-4Ei" id="KJ6-5Q-EG1"/>

@@ -12,19 +12,22 @@ class ViewModel {
     
     var currencies = BehaviorRelay<[Currency]>(value: [])
     var currencyText = BehaviorRelay<String>(value: "")
+    var error = BehaviorRelay<String>(value: "")
     var results = BehaviorRelay<[ResultCellViewModel]>(value: [])
     var isLoading = BehaviorRelay<Bool>(value: false)
     
-    var currencySelected: Currency?
-    var amount = 0.0
+    private var currencySelected: Currency?
+    private var amount = 0.0
+    private var timer: Timer?
     
     func start() {
         isLoading.accept(true)
         CurrencyService.shared.getCurrencies { [weak self] (currencies) in
             self?.isLoading.accept(false)
             self?.currencies.accept(currencies)
-        } failure: { (error) in
-            // TODO: Show Error
+        } failure: { [weak self] (error) in
+            self?.isLoading.accept(false)
+            self?.showError(message: "Server error while getting currency list")
         }
     }
     
@@ -66,16 +69,30 @@ class ViewModel {
                         }
                         self.results.accept(resultCellViewModels)
                     } else {
-                        // TODO: Show Error
+                        self.showError(message: "Currency not found")
                         self.results.accept([])
                     }
                 }
             } failure: { [weak self] error in
-                // TODO: Show Error
+                self?.showError(message: "Server error while getting conversion rates")
                 self?.results.accept([])
             }
         } else {
             results.accept([])
         }
+    }
+    
+    private func showError(message: String) {
+        error.accept(message)
+        
+        if timer != nil {
+            timer?.invalidate()
+        }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { [weak self] _ in
+            self?.error.accept("")
+            self?.timer?.invalidate()
+            self?.timer = nil
+        })
     }
 }

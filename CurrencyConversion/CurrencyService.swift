@@ -76,4 +76,24 @@ class CurrencyService {
         }
     }
     
+    func getConversionRates(completion: @escaping ([String: Double]) -> Void, failure: @escaping (Error?) -> Void) {
+        let url = CurrencyServiceURLBuilder.conversionRatesURL()
+        let parameters = [
+            "access_key": Config.shared.apiKey()
+        ]
+        
+        request(url: url, parameters: parameters) { (data) in
+            if data["success"] as? Bool == true {
+                if let conversionRates = data["quotes"] as? [String: Double] {
+                    completion(conversionRates)
+                }
+            } else {
+                failure(nil)
+            }
+        } failure: { (error) in
+            failure(nil)
+        }
+
+    }
+    
 }

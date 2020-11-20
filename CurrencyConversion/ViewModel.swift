@@ -21,6 +21,11 @@ class ViewModel {
             self?.currencies.accept(currencies)
         } failure: { (error) in
         }
+        
+        CurrencyService.shared.getConversionRates { data in
+        } failure: { (error) in
+        }
+
     }
     
     func currencyDidSelect(index: Int) {

@@ -22,7 +22,7 @@ class ViewModel {
         } failure: { (error) in
         }
         
-        CurrencyService.shared.getConversionRates { data in
+        CurrencyService.shared.getConversionRates { conversionRates in
         } failure: { (error) in
         }
 

@@ -82,6 +82,7 @@ class CurrencyService {
             
             if Date() < lastUpdate.addingTimeInterval(Config.shared.refreshIntevalInSeconds()) {
                 completion(conversionRates)
+                return
             }
         }
         

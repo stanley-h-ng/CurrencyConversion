@@ -33,7 +33,6 @@ class ViewController: UIViewController {
     }
     
     func setupTFCurrency() {
-        tfCurrency?.placeholder = "Currency"
         tfCurrency?.inputView = currencyPickerView
         tfCurrency?.inputAccessoryView = toolbarForDataPicker(selector: #selector(currencyPickerDoneDidClick))
     }
@@ -70,3 +69,8 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return string.rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789.").inverted) == nil
+    }
+}

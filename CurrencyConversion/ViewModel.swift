@@ -13,12 +13,15 @@ class ViewModel {
     var currencies = BehaviorRelay<[Currency]>(value: [])
     var currencyText = BehaviorRelay<String>(value: "")
     var results = BehaviorRelay<[ResultCellViewModel]>(value: [])
+    var isLoading = BehaviorRelay<Bool>(value: false)
     
     var currencySelected: Currency?
     var amount = 0.0
     
     func start() {
+        isLoading.accept(true)
         CurrencyService.shared.getCurrencies { [weak self] (currencies) in
+            self?.isLoading.accept(false)
             self?.currencies.accept(currencies)
         } failure: { (error) in
             // TODO: Show Error

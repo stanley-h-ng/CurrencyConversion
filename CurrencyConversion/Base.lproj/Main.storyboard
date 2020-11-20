@@ -33,6 +33,10 @@
                                 <rect key="frame" x="15" y="157" width="384" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="AzB-dS-Igx">
+                                <rect key="frame" x="15" y="426" width="384" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -50,6 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="AzB-dS-Igx" id="JzN-Ad-hVG"/>
                         <outlet property="tbvResult" destination="6J3-MS-P6F" id="0fU-5a-4ox"/>
                         <outlet property="tfAmount" destination="JeD-3V-Tpn" id="yct-Oa-J4V"/>
                         <outlet property="tfCurrency" destination="V8X-G5-4Ei" id="KJ6-5Q-EG1"/>

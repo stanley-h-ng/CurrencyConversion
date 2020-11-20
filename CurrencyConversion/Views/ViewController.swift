@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfCurrency: UITextField?
     @IBOutlet weak var tfAmount: UITextField?
     @IBOutlet weak var tbvResult: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView?
     
     let currencyPickerView = UIPickerView()
     
@@ -69,6 +70,14 @@ class ViewController: UIViewController {
             self?.tfCurrency?.resignFirstResponder()
             self?.tfAmount?.resignFirstResponder()
         }.disposed(by: disposeBag)
+        
+        viewModel.isLoading.subscribe(onNext: { [weak self] isLoading in
+            if isLoading {
+                self?.activityIndicatorView?.startAnimating()
+            } else {
+                self?.activityIndicatorView?.stopAnimating()
+            }
+        }).disposed(by: disposeBag)
     }
     
     @objc func currencyPickerDoneDidClick() {

@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import RxCocoa
 
 class ViewModel {
     
+    var currencies = BehaviorRelay<[Currency]>(value: [])
+    
     func start() {
-        CurrencyService.shared.getCurrencies { (currencies) in
-            
+        CurrencyService.shared.getCurrencies { [weak self] (currencies) in
+            self?.currencies.accept(currencies)
         } failure: { (error) in
-            
         }
-
     }
     
 }

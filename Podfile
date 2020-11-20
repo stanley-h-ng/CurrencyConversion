@@ -7,6 +7,7 @@ target 'CurrencyConversion' do
 
   # Pods for CurrencyConversion
   pod 'Alamofire'
+  pod 'RxCocoa'
 
   target 'CurrencyConversionTests' do
     inherit! :search_paths

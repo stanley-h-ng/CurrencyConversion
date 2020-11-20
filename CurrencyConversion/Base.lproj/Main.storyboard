@@ -21,16 +21,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JeD-3V-Tpn">
+                                <rect key="frame" x="15" y="108" width="384" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="V8X-G5-4Ei" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="1Fs-jA-Y94"/>
                             <constraint firstItem="V8X-G5-4Ei" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Lep-3U-nd8"/>
+                            <constraint firstItem="JeD-3V-Tpn" firstAttribute="top" secondItem="V8X-G5-4Ei" secondAttribute="bottom" constant="15" id="aJA-CV-8te"/>
+                            <constraint firstItem="JeD-3V-Tpn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="jV4-l5-BSE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JeD-3V-Tpn" secondAttribute="trailing" constant="15" id="tDq-de-gpC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V8X-G5-4Ei" secondAttribute="trailing" constant="15" id="tXY-ag-ErJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tfAmount" destination="JeD-3V-Tpn" id="yct-Oa-J4V"/>
                         <outlet property="tfCurrency" destination="V8X-G5-4Ei" id="KJ6-5Q-EG1"/>
                     </connections>
                 </viewController>

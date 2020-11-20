@@ -27,12 +27,22 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t0-f6-cIi">
+                        <rect key="frame" x="15" y="65.5" width="384" height="1"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="bln-VB-iua"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="7t0-f6-cIi" secondAttribute="bottom" id="3ov-2e-P6S"/>
                     <constraint firstItem="QQu-IT-y6i" firstAttribute="leading" secondItem="3Ij-Y8-K6Y" secondAttribute="leading" constant="15" id="4mO-xU-PKV"/>
                     <constraint firstAttribute="trailing" secondItem="QQu-IT-y6i" secondAttribute="trailing" constant="15" id="6mI-Gj-K1F"/>
+                    <constraint firstAttribute="trailing" secondItem="7t0-f6-cIi" secondAttribute="trailing" constant="15" id="KnA-kl-KtP"/>
                     <constraint firstItem="QQu-IT-y6i" firstAttribute="top" secondItem="F2i-1V-lNh" secondAttribute="bottom" constant="10" id="Qy1-f8-bRa"/>
                     <constraint firstAttribute="bottom" secondItem="QQu-IT-y6i" secondAttribute="bottom" constant="10" id="UFQ-Eb-qtZ"/>
+                    <constraint firstItem="7t0-f6-cIi" firstAttribute="leading" secondItem="3Ij-Y8-K6Y" secondAttribute="leading" constant="15" id="Z8o-De-u2m"/>
                     <constraint firstAttribute="trailing" secondItem="F2i-1V-lNh" secondAttribute="trailing" constant="15" id="gxU-RR-DPW"/>
                     <constraint firstItem="F2i-1V-lNh" firstAttribute="leading" secondItem="3Ij-Y8-K6Y" secondAttribute="leading" constant="15" id="hBU-90-3AI"/>
                     <constraint firstItem="F2i-1V-lNh" firstAttribute="top" secondItem="3Ij-Y8-K6Y" secondAttribute="top" constant="10" id="qYE-dk-O6K"/>

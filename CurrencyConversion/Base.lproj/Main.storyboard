@@ -29,7 +29,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2hI-YC-r3S"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-MS-P6F">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-MS-P6F">
                                 <rect key="frame" x="15" y="157" width="384" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>

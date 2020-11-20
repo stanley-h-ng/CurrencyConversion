@@ -23,4 +23,8 @@ class Config {
         return "034f9a53938e918a340c1be8ce5c71e7"
     }
     
+    func refreshIntevalInSeconds() -> Double {
+        return 30 * 60
+    }
+    
 }

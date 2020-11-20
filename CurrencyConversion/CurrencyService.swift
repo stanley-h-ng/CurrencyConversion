@@ -77,6 +77,14 @@ class CurrencyService {
     }
     
     func getConversionRates(completion: @escaping ([String: Double]) -> Void, failure: @escaping (Error?) -> Void) {
+        if let lastUpdate = LocalStorageManager.shared.fetchCurrencyRatesLateUpdateTime(),
+           let conversionRates = LocalStorageManager.shared.fetchConversionRates() {
+            
+            if Date() < lastUpdate.addingTimeInterval(Config.shared.refreshIntevalInSeconds()) {
+                completion(conversionRates)
+            }
+        }
+        
         let url = CurrencyServiceURLBuilder.conversionRatesURL()
         let parameters = [
             "access_key": Config.shared.apiKey()
@@ -85,6 +93,8 @@ class CurrencyService {
         request(url: url, parameters: parameters) { (data) in
             if data["success"] as? Bool == true {
                 if let conversionRates = data["quotes"] as? [String: Double] {
+                    LocalStorageManager.shared.store(conversionRates: conversionRates)
+                    LocalStorageManager.shared.store(currencyRatesLateUpdateTime: Date())
                     completion(conversionRates)
                 }
             } else {

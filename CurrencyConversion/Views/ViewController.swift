@@ -64,6 +64,11 @@ class ViewController: UIViewController {
             .bind(to: tbvResult.rx.items(cellIdentifier: String(describing: ResultTableViewCell.self), cellType: ResultTableViewCell.self)) { (_, cellViewModel, cell) in
                 cell.set(viewModel: cellViewModel)
             }.disposed(by: disposeBag)
+        
+        tbvResult.rx.didScroll.subscribe { [weak self] _ in
+            self?.tfCurrency?.resignFirstResponder()
+            self?.tfAmount?.resignFirstResponder()
+        }.disposed(by: disposeBag)
     }
     
     @objc func currencyPickerDoneDidClick() {

@@ -49,6 +49,13 @@ class ViewController: UIViewController {
         viewModel.currencyText.subscribe { [weak self] currencyText in
             self?.tfCurrency?.text = currencyText
         }.disposed(by: disposeBag)
+        
+        tfAmount?.rx.text
+            .distinctUntilChanged()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                self?.viewModel.amountDidUpdate(amount: text ?? "")
+            }).disposed(by: disposeBag)
     }
     
     @objc func currencyPickerDoneDidClick() {

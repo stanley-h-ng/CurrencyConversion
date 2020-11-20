@@ -14,6 +14,7 @@ class ViewModel {
     var currencyText = BehaviorRelay<String>(value: "")
     
     var currencySelected: Currency?
+    var amount = 0.0
     
     func start() {
         CurrencyService.shared.getCurrencies { [weak self] (currencies) in
@@ -31,6 +32,10 @@ class ViewModel {
                 currencyText.accept("")
             }
         }
+    }
+    
+    func amountDidUpdate(amount: String) {
+        self.amount = Double(amount) ?? 0
     }
     
 }
